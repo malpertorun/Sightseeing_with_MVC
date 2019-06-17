@@ -29,6 +29,22 @@ namespace BusinessLogicLayer.Repositories
             return _context.Activities.Find(id);
         }
 
+        public bool AvtivityValid(string name)
+        {
+            bool isValid;
+            var act = _context.Activities.FirstOrDefault(x => x.ActivityName != name);
+            if (act != null)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+            return isValid;
+        }
+
+
         public void CreateActivity(Activity activity)
         {
             _context.Activities.Add(activity);

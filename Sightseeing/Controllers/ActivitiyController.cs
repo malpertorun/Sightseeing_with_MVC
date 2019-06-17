@@ -54,15 +54,18 @@ namespace Sightseeing.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( Activity activity)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _uow._activityRepository.AvtivityValid(activity.ActivityName))
             {
                 _uow._activityRepository.CreateActivity(activity);
                 _uow.Save();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.refCategoryId = new SelectList(_uow._categoryRepository.GetAllCategories(), "CategoryId", "CategoryName", activity.refCategoryId);
-            return View(activity);
+            else
+            {
+                ViewBag.refCategoryId = new SelectList(_uow._categoryRepository.GetAllCategories(), "CategoryId", "CategoryName", activity.refCategoryId);
+                return View(activity);
+            }
+            
         }
 
         // GET: Activitiy/Edit/5

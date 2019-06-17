@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Entitiy.ToDoList>
+
+@{
+    ViewBag.Title = "AllToDoList";
+}
+
+<h2>AllToDoList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToDoListName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.IsDone == true)
+            {
+                <td>
+                    Tamamlanmış Liste
+                </td>
+            }
+            else
+            {
+                <td>
+                    Aktif Liste
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDoListName)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ToDoListId })
+            </td>
+        </tr>
+    }
+
+</table>

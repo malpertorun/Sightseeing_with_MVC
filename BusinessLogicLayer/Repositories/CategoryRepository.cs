@@ -33,6 +33,21 @@ namespace BusinessLogicLayer.Repositories
             return _context.Categories.Find(id);
         }
 
+        public bool CategoryValid(string name)
+        {
+            bool isValid;
+            var act = _context.Categories.FirstOrDefault(x => x.CategoryName != name);
+            if (act != null)
+            {
+                isValid = true;
+            }
+            else
+            {
+                isValid = false;
+            }
+            return isValid;
+        }
+
         public void CreateCategory(Category category)
         {
             _context.Categories.Add(category);

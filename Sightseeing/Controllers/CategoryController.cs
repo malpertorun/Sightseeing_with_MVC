@@ -55,14 +55,17 @@ namespace Sightseeing.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryId,CategoryName")] Category category)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _uow._categoryRepository.CategoryValid(category.CategoryName))
             {
                 _uow._categoryRepository.CreateCategory(category);
                 _uow.Save();
                 return RedirectToAction("Index");
             }
-
-            return View(category);
+            else
+            {
+                return View(category);
+            }
+           
         }
 
         // GET: Category/Edit/5

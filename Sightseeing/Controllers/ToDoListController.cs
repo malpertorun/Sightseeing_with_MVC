@@ -33,6 +33,12 @@ namespace Sightseeing.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        public ActionResult AllToDoList()
+        {
+            return View(_uow._toDoListManager.GetAllToDoListForUser(User.Identity.Name));
+        }
+
+
         public ActionResult Create()
         {
             return View();
@@ -45,6 +51,7 @@ namespace Sightseeing.Controllers
             _uow.Save();
             return Redirect("Index");
         }
+
 
 
     }

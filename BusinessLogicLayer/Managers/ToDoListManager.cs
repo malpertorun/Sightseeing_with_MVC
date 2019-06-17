@@ -37,5 +37,36 @@ namespace BusinessLogicLayer.Managers
             toDoList.ToDoListName = toDoListName;
             _context.ToDoLists.Add(toDoList);
         }
+
+        public void AddRandomActivityToDoList(string userName)
+        {
+            ToDoList tdl = FindActiveToDoListForUser(userName);
+            
+            int CategoryCaunt = _context.Categories.Count();
+            int ActivityCount = _context.Activities.Count();
+            Random rnd = new Random();
+            if (tdl.ListActivities.Count == 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Activity act = _context.Activities.Where(a => a.refCategoryId == rnd.Next(CategoryCaunt) && a.ActivityId == rnd.Next(ActivityCount)).FirstOrDefault();
+
+                    ListActivity la = new ListActivity()
+                    {
+                        refActivityId = act.ActivityId,
+                        refToDoListId = tdl.ToDoListId
+                    };
+
+                    _context.ListActivities.Add(la);
+                }
+            }
+            
+        }
+
+        public List<ListActivity> FindActiveToDoListItems(int toDoListId)
+        {
+            List<ListActivity> lstAct = _context.ListActivities.Where(x => x.refToDoListId == toDoListId).ToList();
+            return lstAct;
+        }
     }
 }
