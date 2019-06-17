@@ -3,12 +3,19 @@
 
     ViewBag.Title = "About";
 }
- 
+    <!DOCTYPE html>
 <html lang="en">
- 
+ <head>
+     <style>
+         #col-md-6{
+            display: normal;
+               
+         }
+     </style>
+ </head>
 <body>
-    <li class="@((ViewBag.PageName == "Index") ? "active" : "")"><a href="@Url.Action("Index","Home")">Home</a></li>
-    <div class="col-md-6">
+     
+    <div id="col-md-6">
         <div class="block block-size-normal">
             <div class="block-heading">
                 <div class="main-text h2">
@@ -18,7 +25,7 @@
             </div>
             <div class="block-content-outer">
                 <div class="block-content-inner">
-                    <p class="lead">The is the Lead Text. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+                    <p class="lead">We are web developer and we develeping web applications.</p>
                     <p>This is the text body. Nullam quis risus eget urna <strong>mollis ornare vel eu leo</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus, nullam id dolor.</p>
                     <p><em>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus, nullam id dolor</em>.</p>
                     <p>
