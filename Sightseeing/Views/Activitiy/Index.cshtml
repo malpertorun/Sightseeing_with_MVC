@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Entitiy.Activity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Activity</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityDescryption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityDescryption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ActivityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ActivityId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,33 @@
+﻿
+@{ 
+
+    ViewBag.Title = "About";
+}
+ 
+<html lang="en">
+ 
+<body>
+    <li class="@((ViewBag.PageName == "Index") ? "active" : "")"><a href="@Url.Action("Index","Home")">Home</a></li>
+    <div class="col-md-6">
+        <div class="block block-size-normal">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    About Us
+                </div>
+
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <p class="lead">The is the Lead Text. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+                    <p>This is the text body. Nullam quis risus eget urna <strong>mollis ornare vel eu leo</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus, nullam id dolor.</p>
+                    <p><em>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus, nullam id dolor</em>.</p>
+                    <p>
+                        <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+                        Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
