@@ -65,8 +65,8 @@ namespace BusinessLogicLayer.Managers
 
         public List<ListActivity> FindToDoListItems(int toDoListId)
         {
-            List<ListActivity> lstAct = _context.ListActivities.Where(x => x.refToDoListId == toDoListId).ToList();
-            return lstAct;
+            return  _context.ListActivities.Where(x => x.refToDoListId == toDoListId).ToList();
+            
         }
     }
 }
